@@ -465,6 +465,8 @@ code {
 .about-card-icon {
   font-size: 3rem;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .about-card p {
