@@ -248,6 +248,8 @@ code {
   white-space: nowrap;
   border: 2px solid transparent;
   text-decoration: none;
+  padding: 9px 22px;
+  font-size: 0.9rem;
 }
 
 .btn-sm  { font-size: 0.82rem; padding: 8px 22px; }
