@@ -57,6 +57,10 @@ const translations = {
     'cl.7': 'Mensaje de revisión de objetivos de junta al final de temporada',
     'cl.8': 'Draft con filtrado y ordenación de campeones por meta y maestría',
     'cl.9': 'Rotación de preguntas en rueda de prensa para evitar repeticiones',
+    'cl.10': 'Auto-updater integrado: actualizaciones automáticas desde la propia app',
+    'cl.11': 'Delegar entrenamientos al entrenador asistente automáticamente',
+    'cl.12': 'Migración completa del motor de juego de fútbol a LoL',
+    'status.dev': 'En desarrollo · develop',
 
     'oss.label':         'Código abierto',
     'oss.title':         'Construido por la comunidad, para la comunidad',
@@ -152,6 +156,10 @@ const translations = {
     'cl.7': 'End-of-season board objective review message with results',
     'cl.8': 'Draft champion filtering and sorting by meta tier and mastery',
     'cl.9': 'Press conference question rotation to avoid repetition',
+    'cl.10': 'Built-in auto-updater: automatic updates from within the app',
+    'cl.11': 'Delegate training to assistant coach automatically',
+    'cl.12': 'Full game engine migration from football to LoL',
+    'status.dev': 'In development · develop',
 
     'oss.label':         'Open source',
     'oss.title':         'Built by the community, for the community',

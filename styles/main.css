@@ -600,6 +600,11 @@ code {
   margin-bottom: 20px;
 }
 
+.cl-dev-label {
+  margin-top: 24px;
+  color: #5b9bd5 !important;
+}
+
 .changelog-list {
   display: flex;
   flex-direction: column;
