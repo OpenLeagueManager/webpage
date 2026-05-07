@@ -60,7 +60,10 @@ const translations = {
     'cl.10': 'Auto-updater integrado: actualizaciones automáticas desde la propia app',
     'cl.11': 'Delegar entrenamientos al entrenador asistente automáticamente',
     'cl.12': 'Migración completa del motor de juego de fútbol a LoL',
-    'status.dev': 'En desarrollo · develop',
+    'cl.13': 'Atributos de jugador nativos de LoL: sin estadísticas de fútbol',
+    'cl.14': 'Buff al jungla y corrección local/visitante en simulación',
+    'cl.15': 'Actualización de datos del mundo (lec_world) con estadísticas recalibradas',
+    'status.dev': 'En desarrollo · v0.2.0',
 
     'oss.label':         'Código abierto',
     'oss.title':         'Construido por la comunidad, para la comunidad',
@@ -159,7 +162,10 @@ const translations = {
     'cl.10': 'Built-in auto-updater: automatic updates from within the app',
     'cl.11': 'Delegate training to assistant coach automatically',
     'cl.12': 'Full game engine migration from football to LoL',
-    'status.dev': 'In development · develop',
+    'cl.13': 'LoL-native player attributes: no more football stats',
+    'cl.14': 'Jungle buff and home/away displacement fix in simulation',
+    'cl.15': 'World data update (lec_world) with recalibrated player stats',
+    'status.dev': 'In development · v0.2.0',
 
     'oss.label':         'Open source',
     'oss.title':         'Built by the community, for the community',
