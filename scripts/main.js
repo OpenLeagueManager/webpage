@@ -63,6 +63,8 @@ const translations = {
     'cl.13': 'Atributos de jugador nativos de LoL: sin estadísticas de fútbol',
     'cl.14': 'Buff al jungla y corrección local/visitante en simulación',
     'cl.15': 'Actualización de datos del mundo (lec_world) con estadísticas recalibradas',
+    'cl.16': 'Soporte de idioma turco',
+    'cl.17': 'Corrección de carga de imágenes en la interfaz',
     'status.dev': 'En desarrollo · v0.2.0',
 
     'oss.label':         'Código abierto',
@@ -165,6 +167,8 @@ const translations = {
     'cl.13': 'LoL-native player attributes: no more football stats',
     'cl.14': 'Jungle buff and home/away displacement fix in simulation',
     'cl.15': 'World data update (lec_world) with recalibrated player stats',
+    'cl.16': 'Turkish language support added',
+    'cl.17': 'Fixed image loading bug in the UI',
     'status.dev': 'In development · v0.2.0',
 
     'oss.label':         'Open source',
