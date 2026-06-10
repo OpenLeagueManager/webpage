@@ -890,6 +890,94 @@ code {
   }
 }
 
+/* File size */
+.dl-size {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+/* Verified check */
+.dl-verified {
+  color: #4ade80;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Most popular badge */
+.download-btn.popular {
+  position: relative;
+  border-color: var(--gold-dim);
+}
+.popular-badge {
+  position: absolute;
+  top: -8px;
+  right: 8px;
+  background: var(--gold);
+  color: var(--bg-dark);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* What's new accordion */
+.whats-new {
+  max-width: 900px;
+  margin: 32px auto 0;
+  text-align: left;
+}
+.whats-new details {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+}
+.whats-new summary {
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 1rem;
+  list-style: none;
+  user-select: none;
+}
+.whats-new summary::-webkit-details-marker { display: none; }
+.whats-new summary::before {
+  content: '▸';
+  display: inline-block;
+  margin-right: 8px;
+  transition: transform var(--transition);
+}
+.whats-new details[open] summary::before {
+  transform: rotate(90deg);
+}
+.whats-new-content {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.whats-new-content h4 {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text);
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+}
+.whats-new-content p {
+  margin: 8px 0 4px;
+}
+.whats-new-content ul {
+  margin: 4px 0 12px 20px;
+  padding: 0;
+}
+
 /* ============================================================
    FOOTER
    ============================================================ */
