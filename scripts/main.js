@@ -269,6 +269,11 @@ function applyLang(lang) {
     });
   });
 
+  // Refresh pushed-at text in current language
+  document.querySelectorAll('[data-stat="pushed-at"]').forEach(el => {
+    el.textContent = timeAgo(_pushedAt, lang);
+  });
+
   const label = document.getElementById('lang-label');
   if (label) label.textContent = lang === 'es' ? 'EN' : 'ES';
 }
@@ -330,6 +335,21 @@ const LIVE_REPO  = 'OpenLeagueManager/OLManager';
 const LIVE_CACHE = 'olm_live_cache';
 const LIVE_TTL   = 60 * 60 * 1000; // 1 hour
 
+let _pushedAt = null; // cached for i18n-aware relative time updates
+
+function timeAgo(dateStr, lang) {
+  if (!dateStr) return lang === 'es' ? 'Actualizado recientemente' : 'Updated recently';
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const mins = Math.floor(diff / 60000);
+  const hours = Math.floor(diff / 3600000);
+  const days  = Math.floor(diff / 86400000);
+  if (mins < 1)   return lang === 'es' ? 'Ahora mismo' : 'Just now';
+  if (mins < 60)  return lang === 'es' ? `Hace ${mins} min` : `${mins}m ago`;
+  if (hours < 24) return lang === 'es' ? `Hace ${hours} h` : `${hours}h ago`;
+  if (days < 30)  return lang === 'es' ? `Hace ${days} días` : `${days}d ago`;
+  return lang === 'es' ? 'El mes pasado' : 'Last month';
+}
+
 function readCache() {
   try {
     const raw = localStorage.getItem(LIVE_CACHE);
@@ -349,7 +369,7 @@ function writeCache(data) {
 async function fetchLiveData() {
   // Try cache first
   const cached = readCache();
-  if (cached) { applyLiveData(cached); return; }
+  if (cached) { applyLiveData(cached); populatePushedAt(cached); return; }
 
   // Fetch both endpoints in parallel
   try {
@@ -363,10 +383,12 @@ async function fetchLiveData() {
     const data = {
       stars: repo.stargazers_count,
       forks: repo.forks_count,
+      pushed_at: repo.pushed_at,
       version: rel.tag_name,
     };
     writeCache(data);
     applyLiveData(data);
+    populatePushedAt(data);
   } catch (e) {
     // Network error: keep hardcoded values silently
   }
@@ -391,5 +413,18 @@ function applyLiveData(data) {
   }
 }
 
-// Fire on DOM ready (script is loaded at end of body, so DOM is ready)
+function populatePushedAt(data) {
+  if (data.pushed_at) {
+    _pushedAt = data.pushed_at;
+    const lang = currentLang || localStorage.getItem('olm-lang') || 'es';
+    document.querySelectorAll('[data-stat="pushed-at"]').forEach(el => {
+      el.textContent = timeAgo(_pushedAt, lang);
+    });
+  }
+}
+
+// Fire on DOM ready
 fetchLiveData();
+
+// Auto-refresh every hour
+setInterval(fetchLiveData, 60 * 60 * 1000);
