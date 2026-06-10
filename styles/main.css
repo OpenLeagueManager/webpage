@@ -1335,3 +1335,219 @@ code {
   .team-card { width: 100%; max-width: 320px; }
   .contrib-grid { justify-content: center; }
 }
+
+/* ============================================================
+   HERO LAYOUT (text + mockup)
+   ============================================================ */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1160px;
+}
+.hero-text {
+  flex: 1 1 60%;
+  min-width: 0;
+  max-width: 720px;
+}
+.hero-mockup {
+  flex: 0 1 40%;
+  max-width: 420px;
+  min-width: 280px;
+  perspective: 1000px;
+}
+
+/* MOCKUP WINDOW */
+.mockup-window {
+  background: linear-gradient(160deg, #161a26 0%, #0f1218 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(200, 155, 60, 0.08),
+              0 0 40px -10px rgba(200, 155, 60, 0.15);
+  overflow: hidden;
+  transform: rotateY(-6deg) rotateX(2deg);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: rotateY(-6deg) rotateX(2deg) translateY(0); }
+  50% { transform: rotateY(-6deg) rotateX(2deg) translateY(-8px); }
+}
+
+.mockup-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--border);
+}
+.mockup-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3a3f4d;
+}
+.mockup-dot:nth-child(1) { background: #ff5f56; }
+.mockup-dot:nth-child(2) { background: #ffbd2e; }
+.mockup-dot:nth-child(3) { background: #27c93f; }
+.mockup-title {
+  margin-left: 12px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mockup-body {
+  padding: 20px 18px;
+}
+.mockup-section { margin-bottom: 4px; }
+.mockup-section + .mockup-section { margin-top: 16px; }
+.mockup-section-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.mockup-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+.mockup-stats {
+  display: flex;
+  gap: 6px;
+}
+.mockup-stat {
+  flex: 1;
+  text-align: center;
+  padding: 8px 4px;
+  background: rgba(200, 155, 60, 0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.mockup-stat-prio {
+  background: rgba(200, 155, 60, 0.1);
+  border-color: var(--gold-dim);
+}
+.ms-label {
+  display: block;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  margin-bottom: 2px;
+}
+.ms-val {
+  display: block;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.mockup-stat-prio .ms-val { color: var(--gold); }
+
+.mockup-match {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.mockup-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.mockup-crest {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+}
+.mockup-crest-alt { background: #4a4f5d; color: var(--text); }
+.mockup-vs {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+.mockup-meta {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.mockup-form {
+  display: flex;
+  gap: 4px;
+}
+.form-pill {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: #fff;
+}
+.form-w { background: #27c93f; }
+.form-d { background: #ffbd2e; color: #1a1a1a; }
+.form-l { background: #ff5f56; }
+
+/* Hero mockup responsive */
+@media (max-width: 900px) {
+  .hero-content { flex-direction: column; align-items: stretch; }
+  .hero-mockup { max-width: 100%; margin-top: 24px; }
+  .mockup-window { transform: none; animation: float-mobile 6s ease-in-out infinite; }
+}
+@keyframes float-mobile {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mockup-window { animation: none; }
+}
+
+/* ============================================================
+   POPULAR BADGE PULSE
+   ============================================================ */
+@keyframes popular-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200, 155, 60, 0.45); }
+  50%      { box-shadow: 0 0 0 10px rgba(200, 155, 60, 0); }
+}
+.popular-badge {
+  animation: popular-pulse 2.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .popular-badge { animation: none; }
+}

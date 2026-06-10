@@ -321,3 +321,75 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
    INIT
    ============================================================ */
 applyLang(currentLang);
+
+/* ============================================================
+   LIVE GITHUB DATA (stars, forks, latest release)
+   Caches results in localStorage for 1h to respect API limits
+   ============================================================ */
+const LIVE_REPO  = 'OpenLeagueManager/OLManager';
+const LIVE_CACHE = 'olm_live_cache';
+const LIVE_TTL   = 60 * 60 * 1000; // 1 hour
+
+function readCache() {
+  try {
+    const raw = localStorage.getItem(LIVE_CACHE);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (Date.now() - parsed.ts > LIVE_TTL) return null;
+    return parsed.data;
+  } catch { return null; }
+}
+
+function writeCache(data) {
+  try {
+    localStorage.setItem(LIVE_CACHE, JSON.stringify({ ts: Date.now(), data }));
+  } catch { /* quota errors are non-fatal */ }
+}
+
+async function fetchLiveData() {
+  // Try cache first
+  const cached = readCache();
+  if (cached) { applyLiveData(cached); return; }
+
+  // Fetch both endpoints in parallel
+  try {
+    const [repoRes, relRes] = await Promise.all([
+      fetch(`https://api.github.com/repos/${LIVE_REPO}`),
+      fetch(`https://api.github.com/repos/${LIVE_REPO}/releases/latest`),
+    ]);
+    if (!repoRes.ok || !relRes.ok) return;
+    const repo = await repoRes.json();
+    const rel  = await relRes.json();
+    const data = {
+      stars: repo.stargazers_count,
+      forks: repo.forks_count,
+      version: rel.tag_name,
+    };
+    writeCache(data);
+    applyLiveData(data);
+  } catch (e) {
+    // Network error: keep hardcoded values silently
+  }
+}
+
+function applyLiveData(data) {
+  // Update stat elements
+  document.querySelectorAll('[data-stat]').forEach(el => {
+    const key = el.getAttribute('data-stat');
+    if (key === 'stars' && typeof data.stars === 'number') el.textContent = data.stars.toLocaleString();
+    if (key === 'forks' && typeof data.forks === 'number') el.textContent = data.forks.toLocaleString();
+  });
+  // Update version badge
+  if (data.version) {
+    document.querySelectorAll('[data-version]').forEach(el => {
+      el.textContent = data.version;
+    });
+    // Replace __VERSION__ in all download URLs
+    document.querySelectorAll('a[href*="__VERSION__"]').forEach(a => {
+      a.href = a.href.replace(/__VERSION__/g, data.version);
+    });
+  }
+}
+
+// Fire on DOM ready (script is loaded at end of body, so DOM is ready)
+fetchLiveData();
