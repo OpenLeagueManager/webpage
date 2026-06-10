@@ -9,6 +9,7 @@ const translations = {
     'nav.team':       'Equipo',
     'nav.community':  'Comunidad',
     'nav.download':   'Descargar',
+    'nav.downloads':  'Descargas',
 
     'hero.badge':          'Pre-Alpha · v0.2.1',
     'hero.title':          'Construye tu dinastía',
@@ -94,6 +95,20 @@ const translations = {
     'footer.legal':     'Legal',
     'footer.copy':      '© 2026 OpenLeagueManager. Licencia GPL-3.0.',
     'footer.made':      'Hecho con ❤ por la comunidad.',
+
+    'downloads.label':      'Descargas',
+    'downloads.title':      'Descarga OLManager',
+    'downloads.subtitle':   'Elige tu plataforma y comienza a gestionar tu equipo.',
+    'downloads.windows.exe':'Instalador (.exe)',
+    'downloads.windows.msi':'Paquete MSI',
+    'downloads.macos.dmg':  'DMG (Apple Silicon)',
+    'downloads.macos.app':  'App Bundle (.tar.gz)',
+    'downloads.linux.appimage':'AppImage',
+    'downloads.linux.deb':  'Debian / Ubuntu (.deb)',
+    'downloads.linux.rpm':  'Fedora / openSUSE (.rpm)',
+    'downloads.android.apk':'APK',
+    'downloads.source.title':'Código fuente',
+    'downloads.source.tar': 'Source (.tar.gz)',
   },
 
   en: {
@@ -103,6 +118,7 @@ const translations = {
     'nav.team':       'Team',
     'nav.community':  'Community',
     'nav.download':   'Download',
+    'nav.downloads':  'Downloads',
 
     'hero.badge':          'Pre-Alpha · v0.2.1',
     'hero.title':          'Build your dynasty',
@@ -188,6 +204,20 @@ const translations = {
     'footer.legal':     'Legal',
     'footer.copy':      '© 2026 OpenLeagueManager. GPL-3.0 License.',
     'footer.made':      'Made with ❤ by the community.',
+
+    'downloads.label':      'Downloads',
+    'downloads.title':      'Download OLManager',
+    'downloads.subtitle':   'Choose your platform and start managing your team.',
+    'downloads.windows.exe':'Installer (.exe)',
+    'downloads.windows.msi':'MSI Package',
+    'downloads.macos.dmg':  'DMG (Apple Silicon)',
+    'downloads.macos.app':  'App Bundle (.tar.gz)',
+    'downloads.linux.appimage':'AppImage',
+    'downloads.linux.deb':  'Debian / Ubuntu (.deb)',
+    'downloads.linux.rpm':  'Fedora / openSUSE (.rpm)',
+    'downloads.android.apk':'APK',
+    'downloads.source.title':'Source code',
+    'downloads.source.tar': 'Source (.tar.gz)',
   }
 };
 
