@@ -101,6 +101,9 @@ const translations = {
     'downloads.subtitle':   'Elige tu plataforma y comienza a gestionar tu equipo.',
     'downloads.popular':    'Más popular',
     'downloads.whatsnew.toggle': '¿Qué hay de nuevo en v0.2.1?',
+    'downloads.verified.tooltip': 'Firma PGP verificada',
+    'downloads.verified.aria':    'Verificado',
+    'downloads.whatsnew.content': '<h4>v0.2.1 — 2026-05-13</h4><p><strong>Añadido:</strong></p><ul><li>Soporte de URL de imagen de perfil para jugadores y componentes del frontend.</li><li>Cadenas de localización para SoloQ rank e impacto del staff en los idiomas soportados.</li></ul><p><strong>Mejorado:</strong></p><ul><li>Gestión de transferencias en flujos de plantilla, incluyendo el comportamiento de destino y tests relacionados.</li><li>Resolución del rol del jugador: el rol de la alineación activa y la posición natural se manejan de forma consistente entre vista de partido, dashboard, plantilla y entrenamiento.</li></ul>',
     'downloads.windows.exe':'Instalador (.exe)',
     'downloads.windows.msi':'Paquete MSI',
     'downloads.macos.dmg':  'DMG (Apple Silicon)',
@@ -212,6 +215,9 @@ const translations = {
     'downloads.subtitle':   'Choose your platform and start managing your team.',
     'downloads.popular':    'Most popular',
     'downloads.whatsnew.toggle': "What's new in v0.2.1?",
+    'downloads.verified.tooltip': 'PGP signature verified',
+    'downloads.verified.aria':    'Verified',
+    'downloads.whatsnew.content': '<h4>v0.2.1 — 2026-05-13</h4><p><strong>Added:</strong></p><ul><li>Profile image URL support for players and related frontend components.</li><li>Localisation strings for SoloQ rank and staff impact across supported languages.</li></ul><p><strong>Changed:</strong></p><ul><li>Improved transfer handling in squad flows, including roster destination behaviour and related transfer tests.</li><li>Improved player role resolution so active lineup role data and natural position are handled consistently across live match, dashboard, squad and training views.</li></ul>',
     'downloads.windows.exe':'Installer (.exe)',
     'downloads.windows.msi':'MSI Package',
     'downloads.macos.dmg':  'DMG (Apple Silicon)',
@@ -244,6 +250,23 @@ function applyLang(lang) {
     const key = el.getAttribute('data-i18n');
     const val = translations[lang][key];
     if (val !== undefined) el.textContent = val;
+  });
+
+  // innerHTML variants (for content with markup)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    const val = translations[lang][key];
+    if (val !== undefined) el.innerHTML = val;
+  });
+
+  // attribute variants: data-i18n-attr="title:k1;aria-label:k2"
+  document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+    el.getAttribute('data-i18n-attr').split(';').forEach(pair => {
+      const [attr, key] = pair.split(':').map(s => s && s.trim());
+      if (!attr || !key) return;
+      const val = translations[lang][key];
+      if (val !== undefined) el.setAttribute(attr, val);
+    });
   });
 
   const label = document.getElementById('lang-label');
