@@ -190,8 +190,8 @@ code {
   flex-shrink: 0;
 }
 
-.lang-select {
-  display: inline-flex;
+.lang-toggle {
+  display: flex;
   align-items: center;
   gap: 6px;
   background: transparent;
@@ -200,31 +200,19 @@ code {
   font-size: 0.8rem;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
-  padding: 6px 14px 6px 10px;
+  padding: 6px 12px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: border-color var(--transition), color var(--transition);
   letter-spacing: 0.06em;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238A9BB0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 10px 6px;
-  padding-right: 28px;
 }
 
-.lang-select:hover {
+.lang-toggle:hover {
   border-color: var(--gold);
   color: var(--gold);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23C89B3C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
-.lang-select option {
-  background: var(--bg-card);
-  color: var(--text);
-}
+.lang-icon { font-size: 0.95rem; }
 
 .nav-burger {
   display: none;
@@ -1072,12 +1060,11 @@ code {
 
 .footer-powered {
   border-top: 1px solid var(--border);
-  margin: 12px auto 0;
-  padding: 12px 24px 20px;
+  margin-top: 12px;
+  padding-top: 12px;
   font-size: 0.78rem;
   color: var(--text-dim);
   text-align: center;
-  max-width: 1160px;
 }
 
 .powered-link {
@@ -1103,6 +1090,12 @@ code {
   opacity: 1;
   transform: translateY(0);
 }
+
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4) { transition-delay: 0.08s; }
+.reveal:nth-child(5) { transition-delay: 0.16s; }
+.reveal:nth-child(6) { transition-delay: 0.24s; }
 
 /* ============================================================
    KEYFRAMES
@@ -1326,13 +1319,35 @@ code {
 
 .contrib-card:hover img { border-color: var(--gold); }
 
+.contrib-card-db {
+  /* Same base as .contrib-card, but no link hover */
+  cursor: default;
+}
+.contrib-card-db:hover {
+  transform: none;
+  border-color: var(--border);
+}
+.contrib-initials {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+  color: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  margin: 0 auto 10px;
+}
+
 .contrib-name {
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--text);
-  overflow-wrap: break-word;
-  word-break: keep-all;
-  text-align: center;
+  word-break: break-all;
 }
 
 .contrib-count {
@@ -1343,8 +1358,6 @@ code {
 @media (max-width: 768px) {
   .team-card { width: 100%; max-width: 320px; }
   .contrib-grid { justify-content: center; }
-  .contrib-card { width: 100px; padding: 14px 10px; }
-  .contrib-card img { width: 44px; height: 44px; }
 }
 
 /* ============================================================

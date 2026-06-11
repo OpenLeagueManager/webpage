@@ -7,51 +7,12 @@
   <meta property="og:title" content="Open League Manager" />
   <meta property="og:description" content="Gestiona tu equipo profesional de LoL. Gratuito, open source, construido por la comunidad." />
   <meta property="og:image" content="assets/banner.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
   <title>Open League Manager</title>
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="preload" href="assets/banner.png" as="image" fetchpriority="high" />
-  <link rel="stylesheet" href="styles/main.css" fetchpriority="high" />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "SoftwareApplication",
-      "name": "Open League Manager",
-      "applicationCategory": "VideoGame",
-      "operatingSystem": "Windows, macOS, Linux, Android",
-      "description": "Free, open-source esports management game for League of Legends. Build your dynasty from regional leagues to world championships.",
-      "url": "https://github.com/OpenLeagueManager/OLManager",
-      "logo": "https://raw.githubusercontent.com/OpenLeagueManager/webpage/main/assets/logo.png",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "OpenLeagueManager"
-      }
-    },
-    {
-      "@type": "Organization",
-      "name": "OpenLeagueManager",
-      "url": "https://github.com/OpenLeagueManager",
-      "logo": "https://raw.githubusercontent.com/OpenLeagueManager/webpage/main/assets/logo.png",
-      "sameAs": [
-        "https://github.com/OpenLeagueManager",
-        "https://discord.gg/QFEhK3hHfe"
-      ]
-    }
-  ]
-}
-</script>
+  <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
 
@@ -68,14 +29,14 @@
         <li><a href="#status" data-i18n="nav.status">Estado</a></li>
         <li><a href="#team" data-i18n="nav.team">Equipo</a></li>
         <li><a href="#community" data-i18n="nav.community">Comunidad</a></li>
+        <li><a href="#downloads" data-i18n="nav.downloads">Descargas</a></li>
         </ul>
       <div class="nav-actions">
-        <select class="lang-select" id="lang-select" aria-label="Select language">
-          <option value="es">ES</option>
-          <option value="en">EN</option>
-          <option value="pt">PT</option>
-        </select>
-        <a href="#downloads" class="btn btn-primary btn-sm" data-i18n="nav.download">Descargar</a>
+        <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+          <span class="lang-icon">🌐</span>
+          <span id="lang-label">EN</span>
+        </button>
+        <a href="https://github.com/OpenLeagueManager/OLManager/releases" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-i18n="nav.download">Descargar</a>
         <button class="nav-burger" id="nav-burger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -92,7 +53,7 @@
         <h1 class="hero-title" data-i18n="hero.title">Construye tu dinastía</h1>
         <p class="hero-subtitle" data-i18n="hero.subtitle">Juego de gestión de esports gratuito y de código abierto para League of Legends. Dirige tu equipo desde las ligas regionales hasta los campeonatos mundiales.</p>
         <div class="hero-cta">
-          <a href="#downloads" class="btn btn-primary btn-lg">
+          <a href="https://github.com/OpenLeagueManager/OLManager/releases" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             <span data-i18n="hero.cta.download">Descargar gratis</span>
           </a>
@@ -381,22 +342,6 @@
         </div>
 
         <div class="team-card reveal">
-          <img src="https://avatars.githubusercontent.com/u/34022939?v=4" alt="Nico Rueda" class="team-avatar" />
-          <h3 class="team-name">Nico Rueda</h3>
-          <span class="team-handle">@NicoRuedaA</span>
-          <span class="team-role" data-i18n="team.role.gamedesigner">Game Designer</span>
-          <p class="team-bio" data-i18n="team.bio.nicorueda">Game Designer · Spain</p>
-          <div class="team-links">
-            <a href="https://github.com/NicoRuedaA" target="_blank" rel="noopener" class="team-link" title="GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-            <a href="https://nicorueda.dev" target="_blank" rel="noopener" class="team-link" title="Website">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="team-card reveal">
           <img src="https://avatars.githubusercontent.com/u/76656911?v=4" alt="chasemrs" class="team-avatar" />
           <h3 class="team-name">Chase</h3>
           <span class="team-handle">@chasemrs</span>
@@ -421,63 +366,104 @@
 
       <div class="contrib-block">
         <h3 class="contrib-subtitle" data-i18n="contrib.game">🎮 Juego</h3>
-        <div class="contrib-grid" data-contrib="game">
+        <div class="contrib-grid">
           <a href="https://github.com/NicoRuedaA" target="_blank" rel="noopener" class="contrib-card reveal">
-            <img src="https://avatars.githubusercontent.com/u/34022939?v=4&s=64" alt="NicoRuedaA" loading="lazy" />
+            <img src="https://avatars.githubusercontent.com/u/34022939?v=4" alt="NicoRuedaA" />
             <span class="contrib-name">NicoRuedaA</span>
-            <span class="contrib-count">600+ commits</span>
+            <span class="contrib-count">60+ commits</span>
           </a>
           <a href="https://github.com/aalonsolopez" target="_blank" rel="noopener" class="contrib-card reveal">
-            <img src="https://avatars.githubusercontent.com/u/49404378?v=4&s=64" alt="aalonsolopez" loading="lazy" />
+            <img src="https://avatars.githubusercontent.com/u/49404378?v=4" alt="aalonsolopez" />
             <span class="contrib-name">aalonsolopez</span>
-            <span class="contrib-count">270+ commits</span>
+            <span class="contrib-count">36 commits</span>
           </a>
           <a href="https://github.com/chasemrs" target="_blank" rel="noopener" class="contrib-card reveal">
-            <img src="https://avatars.githubusercontent.com/u/76656911?v=4&s=64" alt="chasemrs" loading="lazy" />
+            <img src="https://avatars.githubusercontent.com/u/76656911?v=4" alt="chasemrs" />
             <span class="contrib-name">chasemrs</span>
-            <span class="contrib-count">80+ commits</span>
-          </a>
-          <a href="https://github.com/joselaguilarhz" target="_blank" rel="noopener" class="contrib-card reveal">
-            <img src="https://avatars.githubusercontent.com/u/153824159?v=4&s=64" alt="joselaguilarhz" loading="lazy" />
-            <span class="contrib-name">joselaguilarhz</span>
-            <span class="contrib-count">89 commits</span>
+            <span class="contrib-count">19 commits</span>
           </a>
           <a href="https://github.com/drumst0ck" target="_blank" rel="noopener" class="contrib-card reveal">
-            <img src="https://avatars.githubusercontent.com/u/55786662?v=4&s=64" alt="drumst0ck" loading="lazy" />
+            <img src="https://avatars.githubusercontent.com/u/55786662?v=4" alt="drumst0ck" />
             <span class="contrib-name">drumst0ck</span>
-            <span class="contrib-count">15 commits</span>
-          </a>
-          <a href="https://github.com/almuolugombl" target="_blank" rel="noopener" class="contrib-card reveal">
-            <img src="https://avatars.githubusercontent.com/u/174270846?v=4&s=64" alt="almuolugombl" loading="lazy" />
-            <span class="contrib-name">almuolugombl</span>
-            <span class="contrib-count">16 commits</span>
-          </a>
-          <a href="https://github.com/108M" target="_blank" rel="noopener" class="contrib-card reveal">
-            <img src="https://avatars.githubusercontent.com/u/117757556?v=4&s=64" alt="108M" loading="lazy" />
-            <span class="contrib-name">108M</span>
             <span class="contrib-count">7 commits</span>
           </a>
+          <a href="https://github.com/108M" target="_blank" rel="noopener" class="contrib-card reveal">
+            <img src="https://avatars.githubusercontent.com/u/117757556?v=4" alt="108M" />
+            <span class="contrib-name">108M</span>
+            <span class="contrib-count">5 commits</span>
+          </a>
+          <a href="https://github.com/almuolugombl" target="_blank" rel="noopener" class="contrib-card reveal">
+            <img src="https://avatars.githubusercontent.com/u/174270846?v=4" alt="almuolugombl" />
+            <span class="contrib-name">almuolugombl</span>
+            <span class="contrib-count">4 commits</span>
+          </a>
           <a href="https://github.com/RcFarah" target="_blank" rel="noopener" class="contrib-card reveal">
-            <img src="https://avatars.githubusercontent.com/u/64575763?v=4&s=64" alt="RcFarah" loading="lazy" />
+            <img src="https://avatars.githubusercontent.com/u/64575763?v=4" alt="RcFarah" />
             <span class="contrib-name">RcFarah</span>
-            <span class="contrib-count">2 commits</span>
+            <span class="contrib-count">1 commit</span>
+          </a>
+          <a href="https://github.com/keremozmeen" target="_blank" rel="noopener" class="contrib-card reveal">
+            <img src="https://avatars.githubusercontent.com/u/155727156?v=4" alt="keremozmeen" />
+            <span class="contrib-name">keremozmeen</span>
+            <span class="contrib-count">1 commit</span>
           </a>
         </div>
       </div>
 
       <div class="contrib-block">
         <h3 class="contrib-subtitle" data-i18n="contrib.web">🌐 Web</h3>
-        <div class="contrib-grid" data-contrib="web">
+        <div class="contrib-grid">
           <a href="https://github.com/TtvNekix" target="_blank" rel="noopener" class="contrib-card reveal">
-            <img src="https://avatars.githubusercontent.com/u/69590591?v=4&s=64" alt="TtvNekix" loading="lazy" />
+            <img src="https://avatars.githubusercontent.com/u/69590591?v=4" alt="TtvNekix" />
             <span class="contrib-name">TtvNekix</span>
-            <span class="contrib-count">28 commits</span>
+            <span class="contrib-count">7 commits</span>
           </a>
           <a href="https://github.com/aalonsolopez" target="_blank" rel="noopener" class="contrib-card reveal">
-            <img src="https://avatars.githubusercontent.com/u/49404378?v=4&s=64" alt="aalonsolopez" loading="lazy" />
+            <img src="https://avatars.githubusercontent.com/u/49404378?v=4" alt="aalonsolopez" />
             <span class="contrib-name">aalonsolopez</span>
-            <span class="contrib-count">8 commits</span>
+            <span class="contrib-count">1 commit</span>
           </a>
+        </div>
+      </div>
+
+      <div class="contrib-block">
+        <h3 class="contrib-subtitle" data-i18n="contrib.db">📊 Base de datos</h3>
+        <div class="contrib-grid">
+          <div class="contrib-card contrib-card-db reveal">
+            <div class="contrib-initials">NR</div>
+            <span class="contrib-name">Nico Rueda</span>
+            <span class="contrib-count">3343 <span data-i18n="contrib.db.unit">datos aportados</span></span>
+          </div>
+          <div class="contrib-card contrib-card-db reveal">
+            <div class="contrib-initials">KH</div>
+            <span class="contrib-name">Kim "Lizi" Hallz</span>
+            <span class="contrib-count">2717 <span data-i18n="contrib.db.unit">datos aportados</span></span>
+          </div>
+          <div class="contrib-card contrib-card-db reveal">
+            <div class="contrib-initials">AR</div>
+            <span class="contrib-name">Antonio Reyes</span>
+            <span class="contrib-count">2514 <span data-i18n="contrib.db.unit">datos aportados</span></span>
+          </div>
+          <div class="contrib-card contrib-card-db reveal">
+            <div class="contrib-initials">LU</div>
+            <span class="contrib-name">Lucas660</span>
+            <span class="contrib-count">808 <span data-i18n="contrib.db.unit">datos aportados</span></span>
+          </div>
+          <div class="contrib-card contrib-card-db reveal">
+            <div class="contrib-initials">CC</div>
+            <span class="contrib-name">ceto ceto</span>
+            <span class="contrib-count">728 <span data-i18n="contrib.db.unit">datos aportados</span></span>
+          </div>
+          <div class="contrib-card contrib-card-db reveal">
+            <div class="contrib-initials">VA</div>
+            <span class="contrib-name">Vinicius Albuquerque</span>
+            <span class="contrib-count">727 <span data-i18n="contrib.db.unit">datos aportados</span></span>
+          </div>
+          <div class="contrib-card contrib-card-db reveal">
+            <div class="contrib-initials">JA</div>
+            <span class="contrib-name">Jose Luis Aguilar Sánchez</span>
+            <span class="contrib-count">718 <span data-i18n="contrib.db.unit">datos aportados</span></span>
+          </div>
         </div>
       </div>
 
@@ -667,7 +653,7 @@
       <div class="footer-links">
         <div class="footer-col">
           <span class="footer-col-title" data-i18n="footer.links">Enlaces</span>
-          <a href="#downloads" data-i18n="nav.download">Descargar</a>
+          <a href="https://github.com/OpenLeagueManager/OLManager/releases" target="_blank" rel="noopener" data-i18n="nav.download">Descargar</a>
           <a href="https://github.com/OpenLeagueManager/OLManager/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a>
           <a href="https://github.com/OpenLeagueManager/OLManager/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" data-i18n="footer.contribute">Contribuir</a>
         </div>
