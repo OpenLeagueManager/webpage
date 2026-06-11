@@ -335,6 +335,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
    Caches results in localStorage for 1h to respect API limits
    ============================================================ */
 const LIVE_REPO  = 'OpenLeagueManager/OLManager';
+const WEB_REPO   = 'OpenLeagueManager/webpage';
 const LIVE_CACHE = 'olm_live_cache';
 const LIVE_TTL   = 60 * 60 * 1000; // 1 hour
 
@@ -378,21 +379,24 @@ async function fetchLiveData() {
 
   // Fetch all endpoints in parallel
   try {
-    const [repoRes, relRes, contribRes] = await Promise.all([
+    const [repoRes, relRes, olmContribRes, webContribRes] = await Promise.all([
       fetch(`https://api.github.com/repos/${LIVE_REPO}`),
       fetch(`https://api.github.com/repos/${LIVE_REPO}/releases/latest`),
       fetch(`https://api.github.com/repos/${LIVE_REPO}/contributors?per_page=30`),
+      fetch(`https://api.github.com/repos/${WEB_REPO}/contributors?per_page=30`),
     ]);
     if (!repoRes.ok || !relRes.ok) return;
     const repo = await repoRes.json();
     const rel  = await relRes.json();
-    const contributors = contribRes.ok ? await contribRes.json() : [];
+    const olmContributors = olmContribRes.ok ? await olmContribRes.json() : [];
+    const webContributors = webContribRes.ok ? await webContribRes.json() : [];
     const data = {
       stars: repo.stargazers_count,
       forks: repo.forks_count,
       pushed_at: repo.pushed_at,
       version: rel.tag_name,
-      contributors,
+      contributors: olmContributors,
+      webContributors,
     };
     writeCache(data);
     applyLiveData(data);
@@ -421,9 +425,19 @@ function applyLiveData(data) {
   }
   // Update contributor commit counts
   if (Array.isArray(data.contributors) && data.contributors.length) {
-    document.querySelectorAll('[data-contributor]').forEach(el => {
+    document.querySelectorAll('[data-contributor]:not([data-repo])').forEach(el => {
       const login = el.getAttribute('data-contributor');
       const match = data.contributors.find(c => c.login === login);
+      if (match && match.contributions) {
+        const countEl = el.querySelector('.contrib-count');
+        if (countEl) countEl.textContent = `${match.contributions} commits`;
+      }
+    });
+  }
+  if (Array.isArray(data.webContributors) && data.webContributors.length) {
+    document.querySelectorAll('[data-contributor][data-repo="webpage"]').forEach(el => {
+      const login = el.getAttribute('data-contributor');
+      const match = data.webContributors.find(c => c.login === login);
       if (match && match.contributions) {
         const countEl = el.querySelector('.contrib-count');
         if (countEl) countEl.textContent = `${match.contributions} commits`;
