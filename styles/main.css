@@ -1072,11 +1072,12 @@ code {
 
 .footer-powered {
   border-top: 1px solid var(--border);
-  margin-top: 12px;
-  padding-top: 12px;
+  margin: 12px auto 0;
+  padding: 12px 24px 20px;
   font-size: 0.78rem;
   color: var(--text-dim);
   text-align: center;
+  max-width: 1160px;
 }
 
 .powered-link {
@@ -1329,7 +1330,9 @@ code {
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--text);
-  word-break: break-all;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  text-align: center;
 }
 
 .contrib-count {
@@ -1340,6 +1343,8 @@ code {
 @media (max-width: 768px) {
   .team-card { width: 100%; max-width: 320px; }
   .contrib-grid { justify-content: center; }
+  .contrib-card { width: 100px; padding: 14px 10px; }
+  .contrib-card img { width: 44px; height: 44px; }
 }
 
 /* ============================================================
