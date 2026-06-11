@@ -190,8 +190,8 @@ code {
   flex-shrink: 0;
 }
 
-.lang-toggle {
-  display: flex;
+.lang-select {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   background: transparent;
@@ -205,14 +205,20 @@ code {
   cursor: pointer;
   transition: border-color var(--transition), color var(--transition);
   letter-spacing: 0.06em;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-.lang-toggle:hover {
+.lang-select:hover {
   border-color: var(--gold);
   color: var(--gold);
 }
 
-.lang-icon { font-size: 0.95rem; }
+.lang-select option {
+  background: var(--bg-card);
+  color: var(--text);
+}
 
 .nav-burger {
   display: none;

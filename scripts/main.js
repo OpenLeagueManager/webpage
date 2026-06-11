@@ -77,11 +77,14 @@ const translations = {
     'community.github.cta':   'Ver repositorio →',
 
     'team.label':              'Equipo',
-    'team.title':              'Programadores principales',
+    'team.title':              'Equipo principal',
     'team.role.founder':       'Fundador & Lead Developer',
     'team.bio.aalonsolopez':   'Software Engineer · Madrid',
     'team.role.cofounder':     'Co-Fundador & Developer',
     'team.bio.chasemrs':       'Software Developer',
+
+    'team.role.gamedesigner':  'Diseñador de juego',
+    'team.bio.nicorueda':      'Game Designer · España',
 
     'contrib.label': 'Contribuidores',
     'contrib.title': 'Gente que hace esto posible',
@@ -191,11 +194,14 @@ const translations = {
     'community.github.cta':   'View repository →',
 
     'team.label':              'Team',
-    'team.title':              'Core developers',
+    'team.title':              'Core team',
     'team.role.founder':       'Founder & Lead Developer',
     'team.bio.aalonsolopez':   'Software Engineer · Madrid',
     'team.role.cofounder':     'Co-Founder & Developer',
     'team.bio.chasemrs':       'Software Developer',
+
+    'team.role.gamedesigner':  'Game Designer',
+    'team.bio.nicorueda':      'Game Designer · Spain',
 
     'contrib.label': 'Contributors',
     'contrib.title': 'People who make this possible',
@@ -228,6 +234,122 @@ const translations = {
     'downloads.android.apk':'APK',
     'downloads.source.title':'Source code',
     'downloads.source.tar': 'Source (.tar.gz)',
+  },
+
+  pt: {
+    'nav.features':   'Recursos',
+    'nav.about':      'Sobre',
+    'nav.status':     'Status',
+    'nav.team':       'Equipe',
+    'nav.community':  'Comunidade',
+    'nav.download':   'Baixar',
+    'nav.downloads':  'Downloads',
+
+    'hero.badge':          'Pre-Alpha · v0.2.1',
+    'hero.title':          'Construa sua dinastia',
+    'hero.subtitle':       'Jogo de gestão de esports gratuito e de código aberto para League of Legends. Lidere sua equipe das ligas regionais até os campeonatos mundiais.',
+    'hero.cta.download':   'Baixar grátis',
+    'hero.cta.discord':    'Entre no Discord',
+    'hero.stats.license':  'Licença',
+
+    'about.label': 'O jogo',
+    'about.title': 'O que é Open League Manager?',
+    'about.p1':    'Open League Manager é um jogo de gestão de desktop onde você assume o controle de uma equipe profissional de League of Legends. Gerencia contratações, elabora táticas, planeja treinos e administra as finanças do clube com um único objetivo: tornar-se campeão.',
+    'about.p2':    'Construído com Tauri, Rust e React, OLManager é um projeto totalmente independente dedicado ao ecossistema dos esports. Gratuito, de código aberto e desenvolvido pela e para a comunidade.',
+    'about.card':  '"Leve sua equipe das ligas regionais aos campeonatos mundiais"',
+
+    'features.label': 'Funcionalidades',
+    'features.title': 'Tudo que você precisa para gerenciar sua equipe',
+    'features.roster.title':     'Elenco e contratos',
+    'features.roster.desc':      'Contrate, renove e venda jogadores. Gerencie contratos, salários e o mercado de transferências com total controle.',
+    'features.training.title':   'Treinos e scrims',
+    'features.training.desc':    'Planeje sessões de treino, agende scrims contra adversários e prepare taticamente sua equipe para cada partida.',
+    'features.seasons.title':    'Temporadas e torneios',
+    'features.seasons.desc':     'Compita em ligas regionais com classificações estilo LoL e avance aos playoffs. Progresão para competições internacionais em breve.',
+    'features.simulation.title': 'Simulação de partidas',
+    'features.simulation.desc':  'Resultados gerados com estatísticas detalhadas, vantagem de ouro em tempo real e análise de desempenho pós-partida.',
+    'features.draft.title':      'Draft IA',
+    'features.draft.desc':       'Inteligência artificial de draft que evita picks sem sentido, gerencia bans por função e toma decisões coerentes em séries.',
+    'features.stats.title':      'Estatísticas detalhadas',
+    'features.stats.desc':       'Gráficos de vantagem de ouro, classificações com formato Maps estilo LoL e acompanhamento de desempenho por jogador e equipe.',
+
+    'status.label':    'Status do projeto',
+    'status.title':    'Em desenvolvimento ativo',
+    'status.phase':    'Pré-Alpha',
+    'status.desc':     'OLManager é um software em pré-alpha. Os sistemas de jogo estão em construção ativa, os formatos de salvamento evoluem e a documentação é atualizada frequentemente enquanto o projeto se prepara para a colaboração pública.',
+    'status.changelog':'Ver changelog completo →',
+    'status.recent':   'Últimas novidades · v0.2.1',
+
+    'cl.added':   'Adicionado',
+    'cl.changed': 'Melhorado',
+    'cl.fixed':   'Corrigido',
+    'cl.1': 'Suporte a URL de imagem de perfil para jogadores',
+    'cl.2': 'Rank de SoloQ e localização de impacto da equipe adicionados',
+    'cl.3': 'Gestão de transferências e destino de elenco melhorados',
+    'cl.4': 'Resolução de função do jogador unificada em todas as visualizações',
+    'cl.10': 'Sistema multileague: múltiplas competições ativas simultaneamente',
+    'cl.11': 'Navegador de competições com calendário, classificações, equipes e jogadores',
+    'cl.12': 'UI responsiva melhorada para todas as resoluções de desktop',
+    'status.dev': 'Em desenvolvimento · develop',
+
+    'oss.label':         'Código aberto',
+    'oss.title':         'Construído pela comunidade, para a comunidade',
+    'oss.desc':          'Open League Manager é software livre sob licença GPL-3.0. Qualquer pessoa pode contribuir, reportar erros, sugerir melhorias ou fazer um fork. O projeto valoriza transparência, manutenibilidade e atribuição correta de dados.',
+    'oss.step1':         'Abra uma issue ou participe das Discussions com sua ideia',
+    'oss.step2':         'Aguarde aprovação do mantenedor (status:approved)',
+    'oss.step3':         'Crie um branch a partir do development e abra seu PR',
+    'oss.cta.contribute':'Como contribuir',
+    'oss.cta.github':    'Ver no GitHub',
+
+    'community.label':        'Comunidade',
+    'community.title':        'Junte-se à comunidade',
+    'community.subtitle':     'Compartilhe ideias, reporte bugs, acompanhe o desenvolvimento e contribua com o projeto.',
+    'community.discord.title':'Discord',
+    'community.discord.desc': 'Entre no servidor oficial. Converse com os desenvolvedores, proponha ideias e acompanhe as novidades em tempo real.',
+    'community.discord.cta':  'Entrar no servidor →',
+    'community.github.desc':  'Explore o código fonte, abra issues, revise o roadmap e envie suas contribuições.',
+    'community.github.cta':   'Ver repositório →',
+
+    'team.label':              'Equipe',
+    'team.title':              'Equipe principal',
+    'team.role.founder':       'Fundador & Desenvolvedor Líder',
+    'team.bio.aalonsolopez':   'Engenheiro de Software · Madrid',
+    'team.role.cofounder':     'Co-fundador & Desenvolvedor',
+    'team.bio.chasemrs':       'Desenvolvedor de Software',
+    'team.role.gamedesigner':  'Designer de Jogos',
+    'team.bio.nicorueda':      'Game Designer · Espanha',
+
+    'contrib.label': 'Contribuidores',
+    'contrib.title': 'Pessoas que tornam isso possível',
+    'contrib.game':  '🎮 Jogo',
+    'contrib.web':   '🌐 Web',
+
+    'footer.desc':      'Jogo de gestão de esports livre e de código aberto.',
+    'footer.links':     'Links',
+    'footer.contribute':'Contribuir',
+    'footer.community': 'Comunidade',
+    'footer.legal':     'Legal',
+    'footer.copy':      '© 2026 OpenLeagueManager. Licença GPL-3.0.',
+    'footer.made':      'Feito com ❤ pela comunidade.',
+
+    'downloads.label':      'Downloads',
+    'downloads.title':      'Baixe o OLManager',
+    'downloads.subtitle':   'Escolha sua plataforma e comece a gerenciar sua equipe.',
+    'downloads.popular':    'Mais popular',
+    'downloads.whatsnew.toggle': 'O que há de novo na v0.2.1?',
+    'downloads.verified.tooltip': 'Assinatura PGP verificada',
+    'downloads.verified.aria':    'Verificado',
+    'downloads.whatsnew.content': '<h4>v0.2.1 — 13/05/2026</h4><p><strong>Adicionado:</strong></p><ul><li>Suporte a URL de imagem de perfil para jogadores e componentes do frontend.</li><li>Strings de localização para rank SoloQ e impacto da equipe nos idiomas suportados.</li></ul><p><strong>Melhorado:</strong></p><ul><li>Gestão de transferências em fluxos de elenco, incluindo comportamento de destino e testes relacionados.</li><li>Resolução de função do jogador: a função da escalação ativa e a posição natural são tratadas de forma consistente entre as visualizações de partida, dashboard, elenco e treino.</li></ul>',
+    'downloads.windows.exe':'Instalador (.exe)',
+    'downloads.windows.msi':'Pacote MSI',
+    'downloads.macos.dmg':  'DMG (Apple Silicon)',
+    'downloads.macos.app':  'App Bundle (.tar.gz)',
+    'downloads.linux.appimage':'AppImage',
+    'downloads.linux.deb':  'Debian / Ubuntu (.deb)',
+    'downloads.linux.rpm':  'Fedora / openSUSE (.rpm)',
+    'downloads.android.apk':'APK',
+    'downloads.source.title':'Código fonte',
+    'downloads.source.tar': 'Source (.tar.gz)',
   }
 };
 
@@ -238,6 +360,7 @@ let currentLang = localStorage.getItem('olm-lang') || detectLang();
 
 function detectLang() {
   const b = navigator.language || navigator.userLanguage || 'es';
+  if (b.startsWith('pt')) return 'pt';
   return b.startsWith('es') ? 'es' : 'en';
 }
 
@@ -273,9 +396,6 @@ function applyLang(lang) {
   document.querySelectorAll('[data-stat="pushed-at"]').forEach(el => {
     el.textContent = timeAgo(_pushedAt, lang);
   });
-
-  const label = document.getElementById('lang-label');
-  if (label) label.textContent = lang === 'es' ? 'EN' : 'ES';
 }
 
 /* ============================================================
@@ -304,8 +424,8 @@ navLinks.querySelectorAll('a').forEach(a => {
 /* ============================================================
    LANGUAGE TOGGLE
    ============================================================ */
-document.getElementById('lang-toggle').addEventListener('click', () => {
-  applyLang(currentLang === 'es' ? 'en' : 'es');
+document.getElementById('lang-select').addEventListener('change', (e) => {
+  applyLang(e.target.value);
 });
 
 /* ============================================================
