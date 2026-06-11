@@ -376,20 +376,23 @@ async function fetchLiveData() {
   const cached = readCache();
   if (cached) { applyLiveData(cached); populatePushedAt(cached); return; }
 
-  // Fetch both endpoints in parallel
+  // Fetch all endpoints in parallel
   try {
-    const [repoRes, relRes] = await Promise.all([
+    const [repoRes, relRes, contribRes] = await Promise.all([
       fetch(`https://api.github.com/repos/${LIVE_REPO}`),
       fetch(`https://api.github.com/repos/${LIVE_REPO}/releases/latest`),
+      fetch(`https://api.github.com/repos/${LIVE_REPO}/contributors?per_page=30`),
     ]);
     if (!repoRes.ok || !relRes.ok) return;
     const repo = await repoRes.json();
     const rel  = await relRes.json();
+    const contributors = contribRes.ok ? await contribRes.json() : [];
     const data = {
       stars: repo.stargazers_count,
       forks: repo.forks_count,
       pushed_at: repo.pushed_at,
       version: rel.tag_name,
+      contributors,
     };
     writeCache(data);
     applyLiveData(data);
@@ -414,6 +417,17 @@ function applyLiveData(data) {
     // Replace __VERSION__ in all download URLs
     document.querySelectorAll('a[href*="__VERSION__"]').forEach(a => {
       a.href = a.href.replace(/__VERSION__/g, data.version);
+    });
+  }
+  // Update contributor commit counts
+  if (Array.isArray(data.contributors) && data.contributors.length) {
+    document.querySelectorAll('[data-contributor]').forEach(el => {
+      const login = el.getAttribute('data-contributor');
+      const match = data.contributors.find(c => c.login === login);
+      if (match && match.contributions) {
+        const countEl = el.querySelector('.contrib-count');
+        if (countEl) countEl.textContent = `${match.contributions} commits`;
+      }
     });
   }
 }
