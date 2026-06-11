@@ -87,7 +87,7 @@ const translations = {
     'contrib.title': 'Gente que hace esto posible',
     'contrib.game':  '🎮 Juego',
     'contrib.web':   '🌐 Web',
-    'contrib.db':      'Base de datos',
+    'contrib.db':      '📊 Base de datos',
     'contrib.db.unit': 'datos aportados',
 
     'footer.desc':      'Juego de gestión de esports libre y de código abierto.',
@@ -203,7 +203,7 @@ const translations = {
     'contrib.title': 'People who make this possible',
     'contrib.game':  '🎮 Game',
     'contrib.web':   '🌐 Web',
-    'contrib.db':      'Database',
+    'contrib.db':      '📊 Database',
     'contrib.db.unit': 'data contributions',
 
     'footer.desc':      'Free, open-source esports management game.',
@@ -329,7 +329,6 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 /* ============================================================
    INIT
    ============================================================ */
-applyLang(currentLang);
 
 /* ============================================================
    LIVE GITHUB DATA (stars, forks, latest release)
@@ -340,6 +339,8 @@ const LIVE_CACHE = 'olm_live_cache';
 const LIVE_TTL   = 60 * 60 * 1000; // 1 hour
 
 let _pushedAt = null; // cached for i18n-aware relative time updates
+
+applyLang(currentLang);
 
 function timeAgo(dateStr, lang) {
   if (!dateStr) return lang === 'es' ? 'Actualizado recientemente' : 'Updated recently';
