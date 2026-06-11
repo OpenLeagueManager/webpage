@@ -373,9 +373,9 @@ function writeCache(data) {
 }
 
 async function fetchLiveData() {
-  // Try cache first
+  // Try cache first (check it has all fields we need)
   const cached = readCache();
-  if (cached) { applyLiveData(cached); populatePushedAt(cached); return; }
+  if (cached && cached.webContributors) { applyLiveData(cached); populatePushedAt(cached); return; }
 
   // Fetch all endpoints in parallel
   try {
