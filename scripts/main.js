@@ -554,17 +554,19 @@ async function fetchContributors() {
   if (cached) { renderContributors(cached); return; }
 
   try {
-    const [gameRes, webRes] = await Promise.all([
+    const [gameRes, webRes] = await Promise.allSettled([
       fetch(`https://api.github.com/repos/${CONTRIB_REPOS.game}/contributors?per_page=15`),
       fetch(`https://api.github.com/repos/${CONTRIB_REPOS.web}/contributors?per_page=10`),
     ]);
-    if (!gameRes.ok || !webRes.ok) return;
-    const data = {
-      game: await gameRes.json(),
-      web: await webRes.json(),
-    };
-    writeContribCache(data);
-    renderContributors(data);
+    const data = {};
+    if (gameRes.status === 'fulfilled' && gameRes.value.ok) data.game = await gameRes.value.json();
+    if (webRes.status === 'fulfilled' && webRes.value.ok) data.web = await webRes.value.json();
+    if (data.game || data.web) {
+      writeContribCache(data);
+      renderContributors(data);
+    } else {
+      renderContributors(CONTRIB_FALLBACK);
+    }
   } catch { renderContributors(CONTRIB_FALLBACK); }
 }
 
