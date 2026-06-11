@@ -458,21 +458,6 @@ const LIVE_TTL   = 60 * 60 * 1000; // 1 hour
 const CONTRIB_REPOS = { game: 'OpenLeagueManager/OLManager', web: 'OpenLeagueManager/webpage' };
 const CONTRIB_CACHE = 'olm_contrib_cache';
 const CONTRIB_TTL   = 60 * 60 * 1000;
-const CONTRIB_FALLBACK = {
-  game: [
-    { login: 'NicoRuedaA', avatar_url: 'https://avatars.githubusercontent.com/u/34022939?v=4', html_url: 'https://github.com/NicoRuedaA', contributions: 600 },
-    { login: 'aalonsolopez', avatar_url: 'https://avatars.githubusercontent.com/u/49404378?v=4', html_url: 'https://github.com/aalonsolopez', contributions: 270 },
-    { login: 'chasemrs', avatar_url: 'https://avatars.githubusercontent.com/u/76656911?v=4', html_url: 'https://github.com/chasemrs', contributions: 80 },
-    { login: 'drumst0ck', avatar_url: 'https://avatars.githubusercontent.com/u/55786662?v=4', html_url: 'https://github.com/drumst0ck', contributions: 15 },
-    { login: 'almuolugombl', avatar_url: 'https://avatars.githubusercontent.com/u/174270846?v=4', html_url: 'https://github.com/almuolugombl', contributions: 16 },
-    { login: '108M', avatar_url: 'https://avatars.githubusercontent.com/u/117757556?v=4', html_url: 'https://github.com/108M', contributions: 7 },
-    { login: 'RcFarah', avatar_url: 'https://avatars.githubusercontent.com/u/64575763?v=4', html_url: 'https://github.com/RcFarah', contributions: 2 },
-  ],
-  web: [
-    { login: 'TtvNekix', avatar_url: 'https://avatars.githubusercontent.com/u/69590591?v=4', html_url: 'https://github.com/TtvNekix', contributions: 28 },
-    { login: 'aalonsolopez', avatar_url: 'https://avatars.githubusercontent.com/u/49404378?v=4', html_url: 'https://github.com/aalonsolopez', contributions: 8 },
-  ]
-};
 
 let _pushedAt = null; // cached for i18n-aware relative time updates
 
@@ -564,10 +549,9 @@ async function fetchContributors() {
     if (data.game || data.web) {
       writeContribCache(data);
       renderContributors(data);
-    } else {
-      renderContributors(CONTRIB_FALLBACK);
     }
-  } catch { renderContributors(CONTRIB_FALLBACK); }
+    // If API fails, HTML fallback cards stay as-is
+  } catch { /* HTML fallback cards handle this case */ }
 }
 
 function renderContributors(data) {
