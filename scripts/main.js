@@ -442,6 +442,8 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+let _pushedAt = null; // cached for i18n-aware relative time updates
+
 /* ============================================================
    INIT
    ============================================================ */
@@ -458,8 +460,6 @@ const LIVE_TTL   = 60 * 60 * 1000; // 1 hour
 const CONTRIB_REPOS = { game: 'OpenLeagueManager/OLManager', web: 'OpenLeagueManager/webpage' };
 const CONTRIB_CACHE = 'olm_contrib_cache';
 const CONTRIB_TTL   = 60 * 60 * 1000;
-
-let _pushedAt = null; // cached for i18n-aware relative time updates
 
 function timeAgo(dateStr, lang) {
   if (!dateStr) return lang === 'es' ? 'Actualizado recientemente' : 'Updated recently';
