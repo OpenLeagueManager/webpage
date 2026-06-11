@@ -1323,6 +1323,9 @@ code {
   /* Same base as .contrib-card, but no link hover */
   cursor: default;
 }
+.contrib-card-db {
+  width: 140px;
+}
 .contrib-card-db:hover {
   transform: none;
   border-color: var(--border);
@@ -1347,7 +1350,9 @@ code {
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--text);
-  word-break: break-all;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .contrib-count {
