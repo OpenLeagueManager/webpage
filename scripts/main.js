@@ -455,6 +455,10 @@ const LIVE_REPO  = 'OpenLeagueManager/OLManager';
 const LIVE_CACHE = 'olm_live_cache';
 const LIVE_TTL   = 60 * 60 * 1000; // 1 hour
 
+const CONTRIB_REPOS = { game: 'OpenLeagueManager/OLManager', web: 'OpenLeagueManager/webpage' };
+const CONTRIB_CACHE = 'olm_contrib_cache';
+const CONTRIB_TTL   = 60 * 60 * 1000;
+
 let _pushedAt = null; // cached for i18n-aware relative time updates
 
 function timeAgo(dateStr, lang) {
@@ -486,6 +490,22 @@ function writeCache(data) {
   } catch { /* quota errors are non-fatal */ }
 }
 
+function readContribCache() {
+  try {
+    const raw = localStorage.getItem(CONTRIB_CACHE);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (Date.now() - parsed.ts > CONTRIB_TTL) return null;
+    return parsed.data;
+  } catch { return null; }
+}
+
+function writeContribCache(data) {
+  try {
+    localStorage.setItem(CONTRIB_CACHE, JSON.stringify({ ts: Date.now(), data }));
+  } catch { /* quota error */ }
+}
+
 async function fetchLiveData() {
   // Try cache first
   const cached = readCache();
@@ -511,6 +531,48 @@ async function fetchLiveData() {
     populatePushedAt(data);
   } catch (e) {
     // Network error: keep hardcoded values silently
+  }
+}
+
+async function fetchContributors() {
+  const cached = readContribCache();
+  if (cached) { renderContributors(cached); return; }
+
+  try {
+    const [gameRes, webRes] = await Promise.all([
+      fetch(`https://api.github.com/repos/${CONTRIB_REPOS.game}/contributors?per_page=15`),
+      fetch(`https://api.github.com/repos/${CONTRIB_REPOS.web}/contributors?per_page=10`),
+    ]);
+    if (!gameRes.ok || !webRes.ok) return;
+    const data = {
+      game: await gameRes.json(),
+      web: await webRes.json(),
+    };
+    writeContribCache(data);
+    renderContributors(data);
+  } catch { /* graceful degradation */ }
+}
+
+function renderContributors(data) {
+  for (const [block, contributors] of Object.entries(data)) {
+    const grid = document.querySelector(`[data-contrib="${block}"]`);
+    if (!grid) continue;
+    grid.innerHTML = '';
+    contributors.forEach((c, i) => {
+      const card = document.createElement('a');
+      card.href = c.html_url;
+      card.target = '_blank';
+      card.rel = 'noopener';
+      card.className = 'contrib-card reveal';
+      card.style.transitionDelay = `${i * 0.08}s`;
+      card.innerHTML = `
+        <img src="${c.avatar_url}&s=64" alt="${c.login}" loading="lazy" />
+        <span class="contrib-name">${c.login}</span>
+        <span class="contrib-count">${c.contributions} commit${c.contributions !== 1 ? 's' : ''}</span>
+      `;
+      grid.appendChild(card);
+      revealObserver.observe(card);
+    });
   }
 }
 
@@ -545,6 +607,7 @@ function populatePushedAt(data) {
 
 // Fire on DOM ready
 fetchLiveData();
+fetchContributors();
 
 // Auto-refresh every hour
 setInterval(fetchLiveData, 60 * 60 * 1000);
