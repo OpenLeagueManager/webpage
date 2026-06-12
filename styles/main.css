@@ -1323,14 +1323,22 @@ code {
   /* Same base as .contrib-card, but no link hover */
   cursor: default;
 }
-.contrib-card-db {
-  width: 140px;
+.contrib-card-db:not(a) {
+  cursor: default;
 }
-.contrib-card-db:hover {
+.contrib-card-db:not(a):hover {
   transform: none;
   border-color: var(--border);
 }
-.contrib-initials {
+.contrib-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  margin: 0 auto 10px;
+  display: block;
+}
   width: 56px;
   height: 56px;
   border-radius: 50%;
