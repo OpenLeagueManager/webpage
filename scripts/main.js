@@ -82,6 +82,8 @@ const translations = {
     'team.bio.aalonsolopez':   'Software Engineer · Madrid',
     'team.role.cofounder':     'Co-Fundador & Developer',
     'team.bio.chasemrs':       'Software Developer',
+    'team.role.dev':           'Desarrollador Principal',
+    'team.bio.nicorueda':      'Top Contributor',
 
     'contrib.label': 'Contribuidores',
     'contrib.title': 'Gente que hace esto posible',
@@ -198,6 +200,8 @@ const translations = {
     'team.bio.aalonsolopez':   'Software Engineer · Madrid',
     'team.role.cofounder':     'Co-Founder & Developer',
     'team.bio.chasemrs':       'Software Developer',
+    'team.role.dev':           'Lead Developer',
+    'team.bio.nicorueda':      'Top Contributor',
 
     'contrib.label': 'Contributors',
     'contrib.title': 'People who make this possible',
