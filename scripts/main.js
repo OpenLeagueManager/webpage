@@ -377,11 +377,15 @@ function writeCache(data) {
 }
 
 async function fetchLiveData() {
-  // Try cache first (check it has all fields we need)
+  // Show cached data instantly if available
   const cached = readCache();
-  if (cached && cached.webContributors) { applyLiveData(cached); populatePushedAt(cached); return; }
+  if (cached && cached.webContributors) {
+    applyLiveData(cached);
+    populatePushedAt(cached);
+    // Don't return — also fetch fresh data in background (stale-while-revalidate)
+  }
 
-  // Fetch all endpoints in parallel
+  // Fetch fresh data from GitHub API
   try {
     const [repoRes, relRes, olmContribRes, webContribRes] = await Promise.all([
       fetch(`https://api.github.com/repos/${LIVE_REPO}`),
