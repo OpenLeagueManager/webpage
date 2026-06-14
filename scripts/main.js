@@ -431,27 +431,24 @@ function applyLiveData(data) {
       a.href = a.href.replace(/__VERSION__/g, data.version);
     });
   }
-  // Update contributor commit counts
-  if (Array.isArray(data.contributors) && data.contributors.length) {
-    document.querySelectorAll('[data-contributor]:not([data-repo])').forEach(el => {
-      const login = el.getAttribute('data-contributor');
-      const match = data.contributors.find(c => c.login === login);
-      if (match && match.contributions) {
-        const countEl = el.querySelector('.contrib-count');
-        if (countEl) countEl.textContent = `${match.contributions} commits`;
-      }
-    });
-  }
-  if (Array.isArray(data.webContributors) && data.webContributors.length) {
-    document.querySelectorAll('[data-contributor][data-repo="webpage"]').forEach(el => {
-      const login = el.getAttribute('data-contributor');
-      const match = data.webContributors.find(c => c.login === login);
-      if (match && match.contributions) {
-        const countEl = el.querySelector('.contrib-count');
-        if (countEl) countEl.textContent = `${match.contributions} commits`;
-      }
-    });
-  }
+  // Render contributor cards from API data (sorted by contributions desc)
+  renderContribCards(data.contributors || [], 'contrib-game-grid');
+  renderContribCards(data.webContributors || [], 'contrib-web-grid');
+}
+
+function renderContribCards(list, gridId) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  const sorted = [...list].sort((a, b) => (b.contributions || 0) - (a.contributions || 0));
+  grid.innerHTML = sorted.map(c => `
+    <a href="https://github.com/${c.login}" target="_blank" rel="noopener" class="contrib-card reveal">
+      <img src="${c.avatar_url}&s=112" alt="${c.login}" />
+      <span class="contrib-name">${c.login}</span>
+      <span class="contrib-count">${c.contributions} commits</span>
+    </a>
+  `).join('');
+  // Re-observe new cards for scroll reveal
+  grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 }
 
 function populatePushedAt(data) {
